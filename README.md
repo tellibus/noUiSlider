@@ -6,6 +6,11 @@ It fully supports touch, and it is way(!) less bloated than the jQueryUI library
 
 A full documentation, including examples, is available on the [noUiSlider documentation page](http://refreshless.com/nouislider/).
 
+**Changelog for tellibus fork:**
+_[http://tellibus.com/lab/noUiSlider]_
+
+* Added support for Zepto (needs including default pack + data.js).
+
 **Changelog for version 3.2.1:**
 _[latest minor release]_
 

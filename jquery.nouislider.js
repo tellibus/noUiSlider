@@ -171,7 +171,7 @@
 					settings.margin = settings.margin ? percentage.from(settings.range, settings.margin) : 0;
 
 					// tests serialization to be strings or jQuery objects
-					if (settings.serialization.to instanceof jQuery || typeof settings.serialization.to == 'string' || settings.serialization.to === false) {
+					if (settings.serialization.to instanceof $ || typeof settings.serialization.to == 'string' || settings.serialization.to === false) {
 						settings.serialization.to = [settings.serialization.to];
 					}
 
@@ -191,7 +191,7 @@
 
 					for (var i = 0; i < settings.handles; i++) {
 
-						handles[i] = slider.append(handlehtml).children(':last');
+						handles[i] = slider.append(handlehtml).children().last();
 						var setTo = percentage.to(settings.range, settings.start[i]);
 						handles[i].css(pos, setTo + '%');
 						if (setTo == 100 && handles[i].is(':first-child')) {
@@ -252,7 +252,7 @@
 
 									unbind.off(bind);
 									$('body').removeClass('TOUCH');
-									if (slider.find('.active').removeClass('active').end().data('_n')) {
+									if (slider.find('.active').removeClass('active').data('_n')) {
 										slider.data('_n', false).change();
 									}
 
@@ -282,7 +282,7 @@
 						var val = percentage.is(settings.range, place(handles[i], pos)).toFixed(res);
 						if (typeof settings.serialization.to[i] == 'string') {
 							handles[i].data('input',
-								slider.append('<input type="hidden" name="' + settings.serialization.to[i] + '">').find('input:last')
+								slider.append('<input type="hidden" name="' + settings.serialization.to[i] + '">').find('input').last()
 								.val(val)
 								.change(function (a) {
 									a.stopPropagation();
@@ -351,9 +351,9 @@
 		}
 
 		// remap the native/current val function to noUiSlider
-		var $_val = jQuery.fn.val;
+		var $_val = $.fn.val;
 
-		jQuery.fn.val = function () {
+		$.fn.val = function () {
 			return this.data('_isnS_') ? methods.val.apply(this, arguments) : $_val.apply(this, arguments);
 		}
 
@@ -361,4 +361,4 @@
 
 	}
 
-})(jQuery);
+})(window.jQuery || window.Zepto);
