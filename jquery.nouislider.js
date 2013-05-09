@@ -1,4 +1,4 @@
-/* noUiSlider 3.2.1 */
+/* noUiSlider 3.2.1 fork by tellibus.com to support Zepto */
 (function ($) {
 
 	$.fn.noUiSlider = function (options, flag) {
@@ -66,7 +66,13 @@
 		// get standarised clientX and clientY
 		function client(f) {
 			try {
-				return [(f.clientX || f.originalEvent.clientX || f.originalEvent.touches[0].clientX), (f.clientY || f.originalEvent.clientY || f.originalEvent.touches[0].clientY)];
+                if (typeof f.originalEvent == "undefined") {
+                    // Zepto
+    				return [(f.clientX || f.clientX || f.touches[0].clientX), (f.clientY || f.clientY || f.touches[0].clientY)];                    
+                } else {
+                    // jQuery
+    				return [(f.clientX || f.originalEvent.clientX || f.originalEvent.touches[0].clientX), (f.clientY || f.originalEvent.clientY || f.originalEvent.touches[0].clientY)];                    
+                }
 			} catch (e) {
 				return ['x', 'y'];
 			}
