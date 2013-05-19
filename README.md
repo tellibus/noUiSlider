@@ -1,3 +1,6 @@
+# Information about this fork #
+[http://tellibus.com/lab/noUiSlider](http://tellibus.com/lab/noUiSlider)
+
 # noUiSlider
 _Current version: 3.2.0_
 
